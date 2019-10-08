@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import ManagementPortal from './management';
 import SimpleMenu from '../components/Menu';
 import Welcome from '../components/Welcome';
-import LetterAvatars from '../components/LetterAvatar';
+import InputQuestionPage from "./Input-question.page";
 
 const App: React.FC = () => {
   return (
@@ -12,8 +11,9 @@ const App: React.FC = () => {
       <header className="App-header">
         <Welcome name="Diz" />
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <ManagementPortal></ManagementPortal>
-        <LetterAvatars></LetterAvatars>
+        {/*<ManagementPortal></ManagementPortal>
+        <LetterAvatars></LetterAvatars>*/}
+        <InputQuestionPage></InputQuestionPage>
       </header>
     </div>
 
