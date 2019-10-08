@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock } from '../examples/Clock';
+import { Clock } from './Clock';
 
 interface Props {
   name: string

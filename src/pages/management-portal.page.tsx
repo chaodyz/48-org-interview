@@ -1,15 +1,11 @@
 import React from 'react';
 import SimpleCard from '../components/SimpleCard';
 import './App.css';
-import { Name, emotionUnit, Person } from '../model';
+import { Person } from '../model';
 
 
 interface ManagementPortalState{
 persons: Person[];
-}
-
-const styles={
-  
 }
 
 class ManagementPortal extends React.Component<any, ManagementPortalState> {
