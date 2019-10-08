@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock } from '../examples/Clock';
 
 interface Props {
   name: string
@@ -10,7 +11,7 @@ interface State {
 
 class Welcome extends React.Component<Props, any> {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <div><h1>Hello, {this.props.name} </h1><Clock /></div> ;
   }
 }
 
