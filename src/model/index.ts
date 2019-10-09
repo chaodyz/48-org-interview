@@ -25,3 +25,12 @@ export interface Question {
   user_id: string;
   weights_id: string;
 }
+// {questionString, { {teamwork:4},{communication:6} } }
+export interface QuestionSubmission {
+  question: string;
+  weights: Weight[];
+}
+
+export interface Weight {
+  [key: string]: number;
+}

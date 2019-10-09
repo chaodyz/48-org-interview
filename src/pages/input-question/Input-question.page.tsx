@@ -15,6 +15,7 @@ import {
 import { categories } from '../../mock';
 import './input-question.css';
 import SimpleDialog from '../../components/simpleDialog';
+import { QuestionSubmission, Weight } from '../../model';
 
 
 interface Props { }
@@ -22,6 +23,9 @@ interface Props { }
 interface MyState {
   categories: string[];
   selectedCats: string[];
+  savedQuestions: QuestionSubmission[],
+  currentQuestion: string;
+  weights: Weight[]
 }
 
 const ITEM_HEIGHT = 48;
@@ -42,6 +46,9 @@ class InputQuestionPage extends React.Component<Props, MyState> {
     this.state = {
       categories,
       selectedCats: [],
+      savedQuestions: [],
+      weights: [{ 'Training and Learning Opportunities': 1 }],
+      currentQuestion: 'something',
     };
 
     this.handleYes = this.handleYes.bind(this);
@@ -60,9 +67,22 @@ class InputQuestionPage extends React.Component<Props, MyState> {
     }
   };
 
-  valuetext = value => {
-    return `${value}°C`;
+  valuetext = (number) => {
+    return number.toString();
   };
+
+  sliderOnChange = (event: object, value: any, cat: string) => {
+
+
+    const weight = { [cat]: value }
+    console.log(weight)
+    // this.setState((prevState, _props) => {
+
+    //   // return { weights: prevState.weights.push(weight) };
+    //   return {}
+    // });
+    // console.log('😁', this.state)
+  }
 
   handleYes = () => {
     console.log('👋 parent yes')
@@ -71,6 +91,38 @@ class InputQuestionPage extends React.Component<Props, MyState> {
   handleNo = () => {
     console.log('👋 parent no ')
     // save and clear
+
+
+    this.saveQuestion(this.composeQuestionSubmission());
+  }
+
+  composeQuestionSubmission(): QuestionSubmission {
+    return {
+      question: this.state.currentQuestion,
+      weights: this.state.weights
+    }
+  }
+
+  saveQuestion(questionSubmission: QuestionSubmission) {
+    fetch("http://localhost:3001/saveQuestions")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState((prev, _props) => {
+            return { savedQuestions: [...prev.savedQuestions, ...result] };
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          console.error(error);
+          // this.setState({
+          //   isLoaded: true,
+          //   error
+          // });
+        }
+      )
   }
 
   render() {
@@ -127,7 +179,9 @@ class InputQuestionPage extends React.Component<Props, MyState> {
               </Typography>
               <Slider
                 defaultValue={0}
+                name={cat}
                 getAriaValueText={this.valuetext}
+                onChange={(event, object) => this.sliderOnChange(event, object, cat)}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
                 step={1}
