@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
-import * as db from "../backend/db";
+// import * as db from "../backend/db";
 
-const users = db.getAllUsers();
-console.log(users);
-const job_id = db.createXanderJob();
-console.log(job_id);
+// const users = db.getAllUsers();
+// console.log(users);
+// const job_id = db.createXanderJob();
+// console.log(job_id);
 
+// db.getUserInfo("zHNglO26hPuC58e331tG");
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
