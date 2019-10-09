@@ -1,0 +1,34 @@
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  text-align: center;
+}
+
+.formControl {
+  margin: 8px !important;
+  min-width: 100px;
+  max-width: 500px;
+  padding: 18.5px 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chip {
+  margin: 10px;
+}
+
+.noLabel {
+  margin-top: 15px;
+}
+
+.margin10 {
+  margin: 10px;
+}
+
+.addButton {
+  align-self: flex-end;
+}
