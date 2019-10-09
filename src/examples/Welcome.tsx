@@ -2,17 +2,18 @@ import React from 'react';
 import { Clock } from './Clock';
 
 interface Props {
-  name: string
+  name: string;
 }
 
-interface State {
-
-}
+interface State {}
 
 export default class Welcome extends React.Component<Props, any> {
   render() {
-    return <div><h1>Hello, {this.props.name} </h1><Clock /></div> ;
+    return (
+      <div>
+        <h1>Hello, {this.props.name} </h1>
+        <Clock />
+      </div>
+    );
   }
 }
-
-

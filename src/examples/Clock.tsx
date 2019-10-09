@@ -1,11 +1,10 @@
-
 import React from 'react';
 
 function FormattedDate(props: any) {
   return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
 }
 
-export class Clock extends React.Component<any,any> {
+export class Clock extends React.Component<any, any> {
   timerID: any;
 
   constructor(props: any) {
@@ -14,10 +13,7 @@ export class Clock extends React.Component<any,any> {
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
+    this.timerID = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
@@ -26,17 +22,15 @@ export class Clock extends React.Component<any,any> {
 
   tick() {
     this.setState({
-      date: new Date()
+      date: new Date(),
     });
   }
 
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
         <FormattedDate date={this.state.date} />
       </div>
     );
   }
 }
-
