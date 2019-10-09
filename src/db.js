@@ -19,15 +19,16 @@ export function getUserInfo(userId) {
       result.push(Object.assign(answerArrayWithSelectedUserId.hasOwnProperty(value.id), value.data()));
     });
   });
-  console.log(result);
   return result;
 };
 
 // ObjectArray: [{questionString, { {teamwork:4},{communication:6} } }  , ...]
 export function addQuestionToDb(questions) {
   let ref = db.collection("question");
-
+  let ids = [];
   questions.forEach(value => {
+    ids.push(ref.doc().id);
     ref.add(value);
   });
+  return ids;
 };

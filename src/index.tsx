@@ -11,6 +11,8 @@ import * as serviceWorker from './serviceWorker';
 // console.log(job_id);
 
 // db.getUserInfo("zHNglO26hPuC58e331tG");
+// db.getAllUsers();
+// db.getUserInfo("zHNglO26hPuC58e331tG");
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
