@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
+import * as db from "./db";
+
+const users = db.getAllUsers();
+console.log(users);
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
