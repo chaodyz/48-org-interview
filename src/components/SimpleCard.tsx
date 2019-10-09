@@ -3,17 +3,19 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Avatar } from '@material-ui/core';
+import { Avatar, CardActions, Button } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
-import { Name } from '../model';
+import { Name, Person } from '../model';
 
 interface CardProp {
-  name: Name;
+  person: Person;
+  handleClick: () => void
 }
 
 const styles = {
   card: {
     minWidth: 275,
+    margin: 15
   },
   bullet: {
     display: 'inline-block',
@@ -47,16 +49,26 @@ class SimpleCard extends React.Component<any, CardProp, any> {
     );
   }
 
+  handleClick = () => {
+    this.props.handleClick();
+  }
+
   render() {
-    const { classes, name } = this.props;
+    const { classes, person } = this.props;
     return (
       <Card className={classes.card}>
         <CardContent>
-          <Avatar className={classes.orangeAvatar}>{this.getInitial(name)} </Avatar>
+          <Avatar className={classes.orangeAvatar}>{this.getInitial(person.name)} </Avatar>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {this.getFullName(name)}
+            {this.getFullName(person.name)}
+          </Typography>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            {person.score}
           </Typography>
         </CardContent>
+        <CardActions>
+          <Button size="small" onClick={this.handleClick}>View</Button>
+        </CardActions>
       </Card>
     );
   }
