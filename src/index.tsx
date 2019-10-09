@@ -12,7 +12,6 @@ import * as serviceWorker from './serviceWorker';
 
 // db.getUserInfo("zHNglO26hPuC58e331tG");
 
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

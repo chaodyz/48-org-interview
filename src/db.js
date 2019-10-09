@@ -1,8 +1,7 @@
 import db from "./firestore";
 
 export function getAllUsers() {
-    const users = db.collection("user").get().then(users => users.docs.map(value => value.data()));
-    return users;
+    return db.collection("user").get().then(users => users.docs.map(value => value.data()));
 };
 
 export function getUserInfo(userId) {
@@ -15,11 +14,20 @@ export function getUserInfo(userId) {
       answerArrayWithSelectedUserId[value.data()["question_id"]] = value.data();
     });
   });
-
   db.collection("question").get().then(snap => {
     snap.docs.forEach(value => {
-      result.push(Object.assign(answerArrayWithSelectedUserId[value.id],value.data()));
+      result.push(Object.assign(answerArrayWithSelectedUserId.hasOwnProperty(value.id), value.data()));
     });
   });
+  console.log(result);
   return result;
+};
+
+// ObjectArray: [{questionString, { {teamwork:4},{communication:6} } }  , ...]
+export function addQuestionToDb(questions) {
+  let ref = db.collection("question");
+
+  questions.forEach(value => {
+    ref.add(value);
+  });
 };
