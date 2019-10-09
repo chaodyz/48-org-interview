@@ -11,7 +11,6 @@ import {
   Checkbox,
   Typography,
   Slider,
-  Button,
 } from '@material-ui/core';
 import { categories } from '../../mock';
 import './input-question.css';
@@ -139,18 +138,18 @@ class InputQuestionPage extends React.Component<Props, MyState> {
             </FormControl>
           );
         })}
-        <Button variant="contained" color="primary" className="addButton">
-          Add
-        </Button>
 
-        <SimpleDialog
-          title="Add"
-          primaryOption="Yes"
-          secondaryOption="No"
-          questionTitle="Add a new question?"
-          handlePrimary={this.handleYes}
-          handleSecondary={this.handleNo}
-        ></SimpleDialog>
+        <div className="dialogButton">
+          <SimpleDialog
+            title="Add"
+            primaryOption="Yes"
+            secondaryOption="No"
+            questionTitle="Add a new question?"
+            handlePrimary={this.handleYes}
+            handleSecondary={this.handleNo}
+          ></SimpleDialog>
+        </div>
+
       </div>
     );
   }

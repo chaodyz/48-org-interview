@@ -15,6 +15,7 @@
 .chips {
   display: flex;
   flex-wrap: wrap;
+  border-bottom: unset !important;
 }
 
 .chip {
@@ -31,4 +32,8 @@
 
 .addButton {
   align-self: flex-end;
+}
+
+.dialogButton {
+  margin: 8px;
 }

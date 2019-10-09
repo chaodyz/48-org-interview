@@ -32,7 +32,6 @@ export class Clock extends React.Component<any, any> {
 
   getTimeRemaining(endtime) {
     var t = Date.parse(new Date(endtime).toString()) - Date.parse(new Date().toString());
-    console.log(t);
     var seconds = Math.floor((t / 1000) % 60);
     var minutes = Math.floor((t / 1000 / 60) % 60);
     var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
