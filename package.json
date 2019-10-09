@@ -17,6 +17,7 @@
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "requests": "^0.3.0",
     "typescript": "^3.6.3"
   },
   "scripts": {
@@ -25,6 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:4000",
   "eslintConfig": {
     "extends": "react-app"
   },
