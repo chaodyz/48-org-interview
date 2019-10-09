@@ -16,9 +16,8 @@ class ManagementPortal extends React.Component<any, ManagementPortalState> {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = () => {
-    //TODO: go to the right link
-    this.props.history.push('/input-question');
+  handleClick = (i) => {
+    this.props.history.push({ pathname: '/interview-result', state: { person: this.state.persons[i] } });
   }
 
 
@@ -26,7 +25,7 @@ class ManagementPortal extends React.Component<any, ManagementPortalState> {
   getPersonCardView(persons: Person[]) {
     return [...persons].map((_x, i) => {
 
-      return <SimpleCard person={this.state.persons[i]} key={i} handleClick={this.handleClick} />;
+      return <SimpleCard person={this.state.persons[i]} key={i} handleClick={(i) => this.handleClick(i)} />;
     });
   }
 

@@ -5,8 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { deepOrange } from '@material-ui/core/colors';
 import { Name } from '../model';
 import TextField from "@material-ui/core/TextField";
-import {Pie} from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
+import { withRouter } from 'react-router-dom';
 
 interface CardProp {
     name: Name
@@ -57,20 +58,21 @@ const data = {
         ]
     }]
 };
- const options = {
-     responsive: false,
+const options = {
+    responsive: false,
 
- }
+}
 
-class SimpleCard extends React.Component<any,CardProp,any> {
+class InterviewResultPage extends React.Component<any, CardProp, any> {
 
     render() {
-        const { classes,name } = this.props;
+        const { classes, location } = this.props;
+        console.log(location.state.person);
         return (
 
             <Card className={classes.card}>
                 <CardContent>
-                        <TextField
+                    <TextField
                         id="outlined-multiline-static"
                         label="Question"
                         multiline
@@ -80,7 +82,7 @@ class SimpleCard extends React.Component<any,CardProp,any> {
                         margin="normal"
                         variant="outlined"
                         disabled={true}
-                        />
+                    />
                     <TextField
                         id="outlined-multiline-static"
                         label="Answer"
@@ -92,11 +94,11 @@ class SimpleCard extends React.Component<any,CardProp,any> {
                         variant="outlined"
                         disabled={true}
                     />
-                    <Pie data={data} options={options}/>
+                    <Pie data={data} options={options} />
                 </CardContent>
             </Card>
         );
 
     }
 }
-export default withStyles(styles)(SimpleCard);
+export default withStyles(styles)(InterviewResultPage);
