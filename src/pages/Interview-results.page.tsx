@@ -3,11 +3,15 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { deepOrange } from '@material-ui/core/colors';
-import { Name } from '../model';
+import {Name, Question} from '../model';
 import TextField from "@material-ui/core/TextField";
 import { Pie } from "react-chartjs-2";
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 import { withRouter } from 'react-router-dom';
+import {persons, questions} from "../mock";
+import Chip from "@material-ui/core/Chip";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItem from "@material-ui/core/ListItem";
 
 interface CardProp {
     name: Name
@@ -40,9 +44,9 @@ const styles = {
 
 const data = {
     labels: [
-        'Red',
-        'Blue',
-        'Yellow'
+        'Teamwork',
+        'Confident',
+        'Optimistic'
     ],
     datasets: [{
         data: [300, 50, 100],
@@ -70,14 +74,17 @@ class InterviewResultPage extends React.Component<any, CardProp, any> {
         // console.log(location.state.person);
         return (
 
-            <Card className={classes.card}>
+            <Card className={classes.card} >
                 <CardContent>
+                    <ListItem>
+                        <ListItemText primary="Sara Pargari" secondary="Score: 80" />
+                    </ListItem>
                     <TextField
                         id="outlined-multiline-static"
                         label="Question"
                         multiline
-                        rows="4"
-                        defaultValue="Default Value"
+                        rows="7"
+                        defaultValue={questions[1].question}
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
@@ -87,8 +94,8 @@ class InterviewResultPage extends React.Component<any, CardProp, any> {
                         id="outlined-multiline-static"
                         label="Answer"
                         multiline
-                        rows="4"
-                        defaultValue="Default Value"
+                        rows="7"
+                        defaultValue={questions[1].answer}
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
