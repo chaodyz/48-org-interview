@@ -79,7 +79,6 @@ class InterviewResultPage extends React.Component<any, CardProp, any> {
                     <ListItem>
                         <ListItemText primary="Sara Pargari" secondary="Score: 80" />
                     </ListItem>
-                    <br/>
                     <TextField
                         id="outlined-multiline-static"
                         label="Question"
