@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, Typography, CardContent } from '@material-ui/core';
-
+import '../pages/App.css';
 export default class QuestionCard extends React.Component<any, any> {
   render() {
     // return (<Card>
@@ -17,7 +16,7 @@ export default class QuestionCard extends React.Component<any, any> {
 
     return (
 
-      <div className="col s12 m6">
+      <div className="card-main">
         <div className="card grey lighten-5">
           <div className="card-content black-text">
             <span className="card-title">{this.props.title}</span>

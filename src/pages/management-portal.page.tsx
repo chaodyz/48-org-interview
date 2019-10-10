@@ -33,7 +33,10 @@ class ManagementPortal extends React.Component<any, ManagementPortalState> {
     return (
       <div className="ManagementPortal">
         <h3>Management Portal</h3>
-        {this.getPersonCardView(this.state.persons)}
+        <div className="simpleCards">
+          {this.getPersonCardView(this.state.persons)}
+        </div>
+
       </div>
     );
   }

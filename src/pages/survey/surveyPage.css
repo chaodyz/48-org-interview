@@ -1,3 +1,22 @@
-.questionCard {
-  margin: 100px;
+.question-card-content {
+  width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+}
+
+.survey-main {
+  width: 700px;
+  height: 700px;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  align-items: center;
+  justify-content: center;
 }

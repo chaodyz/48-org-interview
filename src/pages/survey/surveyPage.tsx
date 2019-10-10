@@ -4,20 +4,26 @@ import { TextField, Button } from '@material-ui/core';
 import QuestionCard from '../../components/questionCard';
 import './surveyPage.css';
 import { questions } from '../../mock';
-interface Props { }
+import '../App.css';
+import { withRouter } from 'react-router-dom';
+
 
 interface MyState {
   questions: Question[];
   currentIndex: number;
   response: string[];
+
 }
-class SurveyPage extends React.Component<Props, MyState> {
+class SurveyPage extends React.Component<any, MyState> {
   handleNext = () => {
     this.setState((prevState, _props) => {
       return { currentIndex: prevState.currentIndex + 1 };
     })
+    if ((this.state.currentIndex + 1) === this.state.questions.length) {
+      this.props.history.push('/management-portal');
+    }
   }
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -29,12 +35,22 @@ class SurveyPage extends React.Component<Props, MyState> {
 
   getSurveyView = (question) => {
     return (
-      <div>
-        <QuestionCard className="questionCard" title={'Question: ' + (this.state.currentIndex + 1)} content={question.question}></QuestionCard>
+      <div className="survey-mat">
+        {/* <QuestionCard className="questionCard" title={'Question: ' + (this.state.currentIndex + 1)} content={question.question}></QuestionCard> */}
+
+        <div className="card-main">
+          <div className="card grey lighten-5">
+            <div className="question-card-content black-text">
+              <span className="card-title">{'Question: ' + (this.state.currentIndex + 1)}</span>
+              <p> {question.question}</p>
+            </div>
+          </div>
+        </div>
+
         <TextField
           id="outlined-full-width"
           label="Answer"
-          style={{ margin: 8 }}
+          style={{ margin: 20, width: 600 }}
           placeholder="Placeholder"
           helperText="Type your response here"
           fullWidth
@@ -52,9 +68,9 @@ class SurveyPage extends React.Component<Props, MyState> {
 
   render() {
     return (
-      <div>
+      <div className="survey-main">
         {this.getSurveyView(this.state.questions[this.state.currentIndex])}
-        <Button variant="contained" color="primary" className="addButton" onClick={this.handleNext}>
+        <Button variant="contained" color="primary" className="submit-button" onClick={this.handleNext}>
           {(this.state.currentIndex + 1) === this.state.questions.length ? 'Finish' : 'Next'}
         </Button>
       </div>
@@ -62,7 +78,7 @@ class SurveyPage extends React.Component<Props, MyState> {
   }
 }
 
-export default SurveyPage;
+export default withRouter(SurveyPage);
 
 
 

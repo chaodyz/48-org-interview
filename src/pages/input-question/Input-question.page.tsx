@@ -16,9 +16,10 @@ import { categories } from '../../mock';
 import './input-question.css';
 import SimpleDialog from '../../components/simpleDialog';
 import { QuestionSubmission, Weight } from '../../model';
+import { withRouter } from 'react-router-dom';
 
 
-interface Props { }
+
 
 interface MyState {
   categories: string[];
@@ -39,8 +40,8 @@ const MenuProps = {
   },
 };
 
-class InputQuestionPage extends React.Component<Props, MyState> {
-  constructor(props: Props) {
+class InputQuestionPage extends React.Component<any, MyState> {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -86,14 +87,16 @@ class InputQuestionPage extends React.Component<Props, MyState> {
 
   handleYes = () => {
     console.log('👋 parent yes')
-    //save and route
+
+
+    // save and clear
   }
   handleNo = () => {
     console.log('👋 parent no ')
-    // save and clear
+    this.props.history.push('/question-list');
+    //save and route
 
-
-    this.saveQuestion(this.composeQuestionSubmission());
+    // this.saveQuestion(this.composeQuestionSubmission());
   }
 
   composeQuestionSubmission(): QuestionSubmission {
@@ -131,10 +134,8 @@ class InputQuestionPage extends React.Component<Props, MyState> {
         <TextField
           id="outlined-full-width"
           label="Question"
-          style={{ margin: 8 }}
-          placeholder="Placeholder"
-          helperText="Full width!"
-
+          style={{ margin: 8, width: 600 }}
+          helperText="should be no more than 400 characters"
           margin="normal"
           variant="outlined"
           multiline
@@ -209,4 +210,4 @@ class InputQuestionPage extends React.Component<Props, MyState> {
   }
 }
 
-export default InputQuestionPage;
+export default withRouter(InputQuestionPage);
