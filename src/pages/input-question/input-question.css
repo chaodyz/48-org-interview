@@ -1,8 +1,13 @@
 .inputForm {
+  width: 700px;
+  height: 700px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   margin: 50px;
-  text-align: center;
 }
 
 .formControl {
@@ -28,10 +33,6 @@
 
 .margin10 {
   margin: 10px;
-}
-
-.addButton {
-  align-self: flex-end;
 }
 
 .dialogButton {

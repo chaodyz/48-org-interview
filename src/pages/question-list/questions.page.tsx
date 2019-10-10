@@ -2,13 +2,14 @@ import React from 'react';
 import { Question } from '../../model';
 import QuestionCard from '../../components/questionCard';
 import { questions } from '../../mock';
-interface Props { }
+import { withRouter } from 'react-router-dom';
+
 
 interface MyState {
   questions: Question[];
 }
-class QuestionsPage extends React.Component<Props, MyState> {
-  constructor(props: Props) {
+class QuestionsPage extends React.Component<any, MyState> {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -40,6 +41,9 @@ class QuestionsPage extends React.Component<Props, MyState> {
   //       }
   //     )
   // }
+  handleClick = () => {
+    this.props.history.push('/survey-page');
+  }
 
   getQuestionListView = (questions: Question[]) => {
     return questions.map((question, index) => <QuestionCard title={'Question ' + (index + 1)} content={question.question}></QuestionCard>)
@@ -48,8 +52,9 @@ class QuestionsPage extends React.Component<Props, MyState> {
   render() {
     return (
       <div>
-        {this.getQuestionListView(this.state.questions)}
-        <button className="btn waves-effect waves-light" type="submit" name="action">Start Survey
+        <div className="simpleCards">       {this.getQuestionListView(this.state.questions)}</div>
+
+        <button className=" submit-button btn waves-effect waves-light" type="submit" name="action" onClick={this.handleClick}>Start Survey
               <i className="material-icons right">send</i>
         </button>
 
@@ -58,7 +63,7 @@ class QuestionsPage extends React.Component<Props, MyState> {
   }
 }
 
-export default QuestionsPage;
+export default withRouter(QuestionsPage);
 
 
 

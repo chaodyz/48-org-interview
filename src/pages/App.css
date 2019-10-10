@@ -1,0 +1,41 @@
+.simpleCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-main {
+  margin: 10px;
+  /* width: 300px;
+  min-width: 300px; */
+  width: 350px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-content {
+  width: 350px !important;
+  height: 200px;
+}
+
+.cardHead {
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-score {
+  /* align-content: center; */
+  padding-left: 10px;
+}
+
+.submit-button {
+  float: right;
+
+  margin: 0 200px 100px 0;
+}
+
+.survey-mat {
+  margin: 15%;
+  display: flex;
+  flex-direction: column;
+}
