@@ -111,7 +111,7 @@ async function getUserInfo(userId) {
   const b = a.docs.map(doc=> doc.data());
   
 
-  }
+
   // const b = a.docs.map(doc => { 
   //   console.log(doc.data());
   //   // doc.data()['question_id']

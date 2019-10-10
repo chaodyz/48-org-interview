@@ -42,7 +42,7 @@ class QuestionsPage extends React.Component<Props, MyState> {
   // }
 
   getQuestionListView = (questions: Question[]) => {
-    return questions.map((question, index) => <QuestionCard title={'Question' + (index + 1)} content={question.question}></QuestionCard>)
+    return questions.map((question, index) => <QuestionCard title={'Question ' + (index + 1)} content={question.question}></QuestionCard>)
   }
 
   render() {
