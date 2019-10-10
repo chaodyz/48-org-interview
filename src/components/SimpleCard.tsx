@@ -22,9 +22,9 @@ const styles = {
     margin: '0 2px',
     transform: 'scale(0.8)',
   },
-  title: {
-    fontSize: 14,
-  },
+  // title: {
+  //   fontSize: 14,
+  // },
   pos: {
     marginBottom: 12,
   },
@@ -59,10 +59,10 @@ class SimpleCard extends React.Component<any, CardProp, any> {
       <Card className={classes.card}>
         <CardContent>
           <Avatar className={classes.orangeAvatar}>{this.getInitial(person.name)} </Avatar>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
+          <Typography className={classes.title} variant="h5" gutterBottom>
             {this.getFullName(person.name)}
           </Typography>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
+          <Typography align="right" className={classes.title} variant="h4" gutterBottom>
             {person.score}
           </Typography>
         </CardContent>

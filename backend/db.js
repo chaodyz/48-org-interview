@@ -103,26 +103,37 @@ async function addAnswers(user_answers) {
   const scores = createXanderJob(user_answers);
 }
 
-function getUserInfo(userId) {
+async function getUserInfo(userId) {
   //get user, return all questions, score for each question, answers, weights, attributes
-  let result = [];
   let answerQuery = db.collection('answer').where('user_id', '==', userId);
-  let answerArrayWithSelectedUserId = [];
-  answerQuery.get().then(snap => {
-    snap.docs.forEach(value => {
-      answerArrayWithSelectedUserId[value.data()['question_id']] = value.data();
-    });
-  });
-  db.collection('question')
-    .get()
-    .then(snap => {
-      snap.docs.forEach(value => {
-        result.push(
-          Object.assign(answerArrayWithSelectedUserId.hasOwnProperty(value.id), value.data()),
-        );
-      });
-    });
-  return result;
+
+  const a = await answerQuery.get();
+  const b = a.docs.map(doc=> doc.data());
+  
+
+  }
+  // const b = a.docs.map(doc => { 
+  //   console.log(doc.data());
+  //   // doc.data()['question_id']
+  // });
+  // console.log(a.docs);
+  // answerQuery.get().then(snap => {
+  //   snap.docs.forEach(value => {
+  //     answerArrayWithSelectedUserId[value.data()['question_id']] = value.data();
+  //   });
+  // });
+
+  // db.collection('question')
+  //   .get()
+  //   .then(snap => {
+  //     snap.docs.forEach(value => {
+  //       result.push(
+  //         Object.assign(answerArrayWithSelectedUserId.hasOwnProperty(value.id), value.data()),
+  //       );
+  //       console.log('🙏', value.data());
+  //     });
+  //   });
+  // return await result;
 }
 
 // ObjectArray: [{questionString, { {teamwork:4},{communication:6} } }  , ...]

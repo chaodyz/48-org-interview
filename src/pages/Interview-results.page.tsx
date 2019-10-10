@@ -67,7 +67,7 @@ class InterviewResultPage extends React.Component<any, CardProp, any> {
 
     render() {
         const { classes, location } = this.props;
-        console.log(location.state.person);
+        // console.log(location.state.person);
         return (
 
             <Card className={classes.card}>

@@ -27,4 +27,12 @@ app.get('/saveQuestions', (req, res) => {
   db.addQuestionToDb();
 });
 
+app.get('/getQuestions', (req, res) => {
+  // var id = req.params.id;
+  // console.log(1, id);
+  var result = db.getUserInfo(1);
+  console.log('🗡', result);
+  res.send('Hello World!', res, req);
+});
+
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));

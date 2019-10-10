@@ -37,19 +37,49 @@ export const categories: string[] = [
 
 export const persons: Person[] = [
   {
-    name: { firstName: 'Sara', lastName: 'Pargair Cohan' },
+    name: { firstName: 'Sara', lastName: 'PCohan' },
+    score: 80,
+    emotionDistribution: [
+      { emotionName: 'confident', percentile: 0.4 },
+      { emotionName: 'optimistic', percentile: 0.4 },
+      { emotionName: 'playful', percentile: 0.4 },
+    ],
   },
   {
     name: { firstName: 'Ruchita', lastName: 'Joshi' },
+    score: 74,
+    emotionDistribution: [
+      { emotionName: 'confident', percentile: 0.4 },
+      { emotionName: 'optimistic', percentile: 0.4 },
+      { emotionName: 'playful', percentile: 0.4 },
+    ],
   },
   {
     name: { firstName: 'Ayaz', lastName: 'Kadam' },
+    score: 56,
+    emotionDistribution: [
+      { emotionName: 'confident', percentile: 0.4 },
+      { emotionName: 'optimistic', percentile: 0.4 },
+      { emotionName: 'playful', percentile: 0.4 },
+    ],
   },
   {
     name: { firstName: 'Anas', lastName: 'AI-Raheem' },
+    score: 47,
+    emotionDistribution: [
+      { emotionName: 'confident', percentile: 0.4 },
+      { emotionName: 'optimistic', percentile: 0.4 },
+      { emotionName: 'playful', percentile: 0.4 },
+    ],
   },
   {
     name: { firstName: 'Di', lastName: 'Zhou' },
+    score: 30,
+    emotionDistribution: [
+      { emotionName: 'confident', percentile: 0.4 },
+      { emotionName: 'optimistic', percentile: 0.4 },
+      { emotionName: 'playful', percentile: 0.4 },
+    ],
   },
 ];
 
@@ -155,3 +185,19 @@ export const questions: Question[] = [
     weights_id: '123',
   },
 ];
+
+// angry: 0,
+//      annoyed: 0,
+//      appreciative: 0.6108686747216702,
+//      confident: 0.47754420534208447,
+//      confused: 0,
+//      excited: 0.47754420534208447,
+//      happy: 0.5398856938274154,
+//      optimistic: 0.47754420534208447,
+//      playful: 0,
+//      sad: 0.08119807934607087,
+//      satisfied: 0.6862401627571847,
+//      stressed: 0.05955908087184198,
+//      thoughtful: 0.08569037852704633,
+//      upset: 0.20693528211727594,
+//      worried: 0.026295335999970082
