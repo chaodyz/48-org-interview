@@ -37,7 +37,7 @@ export const categories: string[] = [
 
 export const persons: Person[] = [
   {
-    name: { firstName: 'Sara', lastName: 'PCohan' },
+    name: { firstName: 'Sara', lastName: 'Pargari' },
     score: 80,
     emotionDistribution: [
       { emotionName: 'confident', percentile: 0.4 },
@@ -86,20 +86,24 @@ export const persons: Person[] = [
 export const questions: Question[] = [
   {
     id: '1',
-    answer: 'I asked questions and faced the issue head on to really understand the problem, and put a plan in place for how to tackle it. Through perseverance, organization, and dedication, and working with others, I was able to solve the problem. No one person has all the answers.',
+    answer:
+      'I asked questions and faced the issue head on to really understand the problem, and put a plan in place for how to tackle it. Through perseverance, organization, and dedication, and working with others, I was able to solve the problem. No one person has all the answers.',
     emotion_id: '1',
     attributes_id: '1',
-    question: 'Describe a time where you were faced with a great challenge. How did you overcome it?',
+    question:
+      'Describe a time where you were faced with a great challenge. How did you overcome it?',
     score: 98,
     user_id: '123',
     weights_id: '123',
   },
   {
     id: '2',
-    answer: 'We worked together to discuss the options and find the pros and cons for each. We then weighed these options together, and occasionally with additional qualified team members and sought their opinions. A solution was then chosen objectively from this data.',
+    answer:
+      'We worked together to discuss the options and find the pros and cons for each. We then weighed these options together, and occasionally with additional qualified team members and sought their opinions. A solution was then chosen objectively from this data.',
     emotion_id: '1',
     attributes_id: '1',
-    question: 'Describe a time where there was a conflict, or difference of opinion, between yourself and a co-worker. How did you deal with it?',
+    question:
+      'Describe a time where there was a conflict, or difference of opinion, between yourself and a co-worker. How did you deal with it?',
     score: 92,
     user_id: '123',
     weights_id: '123',
@@ -126,7 +130,7 @@ export const questions: Question[] = [
   },
   {
     id: '5',
-    answer: 'I\'ll try to understand thier point of view and come to a mutual agreement',
+    answer: "I'll try to understand thier point of view and come to a mutual agreement",
     emotion_id: '1',
     attributes_id: '1',
     question: 'You propose a solution and someone refutes it, what do you do?',
@@ -136,7 +140,8 @@ export const questions: Question[] = [
   },
   {
     id: '6',
-    answer: 'I have done research and typically developers at my skill level make on average 60k. I would like to be at least on par.',
+    answer:
+      'I have done research and typically developers at my skill level make on average 60k. I would like to be at least on par.',
     emotion_id: '1',
     attributes_id: '1',
     question: 'What salary do you expect?',
@@ -146,7 +151,8 @@ export const questions: Question[] = [
   },
   {
     id: '7',
-    answer: 'I have a lot of experience with backend but not so much with frontend. With this full stack position I will be able to further improve my backend skills and work on my weakness which is frontend.',
+    answer:
+      'I have a lot of experience with backend but not so much with frontend. With this full stack position I will be able to further improve my backend skills and work on my weakness which is frontend.',
     emotion_id: '1',
     attributes_id: '1',
     question: 'How do you feel that this role will challenge you?',
@@ -169,7 +175,8 @@ export const questions: Question[] = [
     answer: 'Full stack developer because I like coding',
     emotion_id: '1',
     attributes_id: '1',
-    question: 'Describe your dream job, any job - superhero, accountant, brain surgeon . and why would that be your dream job?',
+    question:
+      'Describe your dream job, any job - superhero, accountant, brain surgeon . and why would that be your dream job?',
     score: 98,
     user_id: '123',
     weights_id: '123',

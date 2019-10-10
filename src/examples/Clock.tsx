@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 function FormattedDate(props: any) {
   return (
-    <h2>
+    <h1 style={{ fontSize: 400, color: '#f44336' }}>
       {props.date.hours + props.date.days * 24}:{props.date.minutes < 10 ? '0' + props.date.minutes : props.date.minutes}:{props.date.seconds < 10 ? '0' + props.date.seconds : props.date.seconds}
-    </h2>
+    </h1>
   );
 }
 

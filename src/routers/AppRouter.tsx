@@ -15,12 +15,13 @@ export default function AppRouter() {
       <div>
         <nav>
           <div className="blue darken-3 nav-wrapper">
-            <img src={logo} className="brand-logo" style={{
+            <Link to="/">    <img src={logo} className="brand-logo" style={{
               width: 100, marginLeft: 50
-            }} />
+            }} /></Link>
+
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <Link to="/">Home</Link>
+
               </li>
               <li>
                 <Link to="/management-portal">Management Portal</Link>
@@ -60,7 +61,7 @@ export default function AppRouter() {
             <SurveyPage></SurveyPage>
           </Route>
           <Route path="/">
-            <Welcome name="Diz" />
+            <Welcome name="User" />
           </Route>
         </Switch>
       </div>
