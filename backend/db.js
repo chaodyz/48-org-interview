@@ -7,15 +7,21 @@ function getAllUsers() {
   const users = db
     .collection('user')
     .get()
-    .then(users => users.docs.map(value => value.data()));
+    .then(users => users.docs.map(value => {
+      user = value.data();
+      user.id = value.id;
+      return user;
+    }));
   return users;
 }
 
 function createXanderJob(user_answers) {
   const url = 'http://staging-crane.eu-west6.per.dev.gcp.ulti.io/documents';
   const body = {
-    documents: user_answers,
-    methods: [{ method: 'emotions' }, { method: 'workplace_themes' }],
+    documents: user_answers.map(answer => {
+      return {"id": "", "text": answer.answer}
+    }),
+    methods: [{ method: 'emotions' }, { method: 'workplace_themes' }]
   };
 
   request.post(url, { json: body }, async function(error, response, body) {
@@ -26,6 +32,7 @@ function createXanderJob(user_answers) {
       return getXanderData(user_answers, job_id);
       // return body["job_id"];
     } else {
+      console.log("no xander job")
       return null;
     }
   });
@@ -42,7 +49,7 @@ function getXanderData(user_answers, job_id) {
       addAnswersToDb(user_answers, res['message']['document_scores']);
       return res['message']['document_scores'];
     } else {
-      console.log('xander scores not found');
+      console.log('no xander scores');
       return null;
     }
   });
@@ -99,6 +106,18 @@ function calculateAnswerScore(scores, weights) {
   return sum * 10;
 }
 
+async function getAnswers() {
+  const answers = db
+    .collection('answer')
+    .get()
+    .then(as => as.docs.map(value => {
+      answer = value.data();
+      answer.id = value.id;
+      return answer;
+    }));
+  return answers;
+}
+
 async function addAnswers(user_answers) {
   const scores = createXanderJob(user_answers);
 }
@@ -107,44 +126,35 @@ async function getUserInfo(userId) {
   //get user, return all questions, score for each question, answers, weights, attributes
   let answerQuery = db.collection('answer').where('user_id', '==', userId);
 
-  const a = await answerQuery.get();
-  const b = a.docs.map(doc=> doc.data());
-  
+  const questions = await db.collection("question").get()
+  .then(qs => qs.docs.map(value => {
+    question = value.data();
+    question.id = value.id;
+    return question;
+  }));
 
+  const answers = await answerQuery.get()
+  .then(as => as.docs.map(value => {
+    answer = value.data();
+    answer.id = value.id;
+    answer.question = questions.find(question => question.id == answer.question_id)
+    return answer;
+  }));
 
-  // const b = a.docs.map(doc => { 
-  //   console.log(doc.data());
-  //   // doc.data()['question_id']
-  // });
-  // console.log(a.docs);
-  // answerQuery.get().then(snap => {
-  //   snap.docs.forEach(value => {
-  //     answerArrayWithSelectedUserId[value.data()['question_id']] = value.data();
-  //   });
-  // });
-
-  // db.collection('question')
-  //   .get()
-  //   .then(snap => {
-  //     snap.docs.forEach(value => {
-  //       result.push(
-  //         Object.assign(answerArrayWithSelectedUserId.hasOwnProperty(value.id), value.data()),
-  //       );
-  //       console.log('🙏', value.data());
-  //     });
-  //   });
-  // return await result;
+  return answers;
 }
 
 // ObjectArray: [{questionString, { {teamwork:4},{communication:6} } }  , ...]
-function addQuestionToDb(questions) {
-  let ref = db.collection('question');
-  let ids = [];
-  questions.forEach(value => {
-    ids.push(ref.doc().id);
-    ref.add(value);
-  });
-  return ids;
+// more like: { "questions": [ {"question": "a?", "weights": { "a1": 2, "a2": 5 }}, {"question": "b?", "weights":  { "b1": 3, "b2": 7 }} ] }
+async function addQuestionToDb(questions) {
+  const promises = questions.map(async question => {
+    const res = await db.collection("question").add(question)
+    question.id = res.id;
+    return question;
+  }
+    );
+  await promises
+  return Promise.all(promises);
 }
 module.exports = {
   getAllUsers,
@@ -153,4 +163,5 @@ module.exports = {
   getUserInfo,
   addAnswersToDb,
   createXanderJob,
+  getAnswers,
 };
